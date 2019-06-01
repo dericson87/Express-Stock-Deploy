@@ -86,7 +86,7 @@ app.use('/api/user_stocks', (req, res)=>{
   }
 });
 app.use('/api/set-stocks', (req, res)=>{
-  console.log(req);
+  console.log('>>> set-stocks user: ' + req.user);
   //users[req.user.google_id] = req.body.stocks;
   db.collection('users').updateOne({
     id: req.user.google_id
