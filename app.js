@@ -7,6 +7,7 @@ var session = require("express-session");
 var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
 var cors = require('cors');
+var axios = require('axios');
 
 
 var indexRouter = require('./routes/index');
@@ -62,6 +63,24 @@ app.use(cookieParser());
 
 app.use('/users', usersRouter);
 
+const IEX_KEY = process.env.MONGODB_URI;
+console.log('>>> IEX key: ' + IEX_KEY);
+
+app.use('/api/get-stock', (req, res)=>{
+  var stocks = req.body.stocks;
+  if(!stocks){
+    console.log('>>> No stocks in body for get-stocks');
+    return;
+  }
+  axios.get(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${stocks[0]},${stocks[1]},${stocks[2]},${stocks[3]},${stocks[4]}&types=quote,news,logo,chart&token=${IEX_KEY}`)
+  .then( (r) => {
+    res.send(r.data);
+  })
+  .catch((err) => {
+    console.log('>>> Err on get-stock: ' + err);
+  });
+
+});
 
 app.get('/api/user_name', (req, res)=> {
   if(req.user) {
