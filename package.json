@@ -13,6 +13,9 @@
     "http-errors": "~1.6.3",
     "mongoose": "^5.5.11",
     "morgan": "~1.9.1",
+    "passport": "^0.4.0",
+    "passport-google": "^0.3.0",
+    "passport-google-oauth": "^2.0.0",
     "pug": "2.0.0-beta11"
   }
 }

@@ -98,7 +98,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new GoogleStrategy({
     clientID: '561311346728-12kk21om7rjfksssh4qg9qi27qu568kp.apps.googleusercontent.com',
     clientSecret: 'RaSICxnN0JwM9XYc7Oli0_Z2',
-    callbackURL: "http://localhost:4000/loggedin"
+    callbackURL: "https://stockappbackend.herokuapp.com/loggedin"
   },
   function(accessToken, refreshToken, profile, done) {
       console.log("After login");
@@ -124,7 +124,7 @@ passport.use(new GoogleStrategy({
 app.use('/logout',
 function(req, res){
   req.logout();
-  res.redirect('http://localhost:3000/');
+  res.redirect('https://stocktracka.herokuapp.com/');
 });
 
 app.get('/login', 
@@ -134,7 +134,7 @@ app.get('/login',
 
   app.get('/loggedin',
 	passport.authenticate( 'google', {
-		successRedirect: '/',
+		successRedirect: 'https://stocktracka.herokuapp.com/',
 		failureRedirect: '/failed'
   })
 );
