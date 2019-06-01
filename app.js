@@ -66,7 +66,7 @@ app.use('/users', usersRouter);
 const IEX_KEY = process.env.IEX_KEY;
 console.log('>>> IEX key: ' + IEX_KEY);
 
-app.use('/api/get-stock', (req, res)=>{
+app.use('/api/get-stocks', (req, res)=>{
   var stocks = req.body.stocks;
   if(!stocks){
     console.log('>>> No stocks in body for get-stocks');
