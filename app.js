@@ -6,6 +6,7 @@ var logger = require('morgan');
 var session = require("express-session");
 var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
+var cors = require('cors');
 
 
 var indexRouter = require('./routes/index');
@@ -13,12 +14,17 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-app.all('*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://stocktracka.herokuapp.com");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
+var whitelist = [
+  'https://stocktracka.herokuapp.com',
+];
+var corsOptions = {
+  origin: function(origin, callback){
+      var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+      callback(null, originIsWhitelisted);
+  },
+  credentials: true
+};
+app.use(cors(corsOptions));
 
 // Loggin code
 var passport = require('passport');
