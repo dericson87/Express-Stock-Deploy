@@ -50,8 +50,10 @@ app.use('/users', usersRouter);
 
 
 app.get('/api/user_name', (req, res)=> {
-  if(req.user)
+  if(req.user) {
     res.send(req.user.displayName);
+    return;
+  }
   res.send('');
 });
 app.use('/api/user_stocks', (req, res)=>{
