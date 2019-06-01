@@ -1,0 +1,21 @@
+@media (max-width: 1200px){
+	.style1 .login-form-box{right: 20px;}
+	#stocklogo {
+		margin-left:0;
+	}
+}
+@media (max-width: 991px){
+	.style1 .login-form-box{right: 0;}
+	.style1 .login-box h1.title{font-size: 45px; left: 30px;}
+	.style1 .login-box h3.subtitle{left: 30px;}
+}
+@media (max-width: 767px){
+	.style1 .login-box{
+		height: auto;padding: 30px 10px;
+		background-image:url(../images/moneybg.jpg) ;
+	}
+	.style1 .login-box h1.title{position: relative; top: 0; left: 0; text-align: center;}
+	.style1 .login-box h3.subtitle{position: relative; top: 0; left: 0; text-align: center; padding-bottom: 15px;}
+	.style1 .login-form-box{position: relative; width: 100%; max-width: 400px; right: 0; margin: 0 auto;}
+	.login-style1{padding: 30px 15px 10px;}
+}
