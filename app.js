@@ -81,6 +81,8 @@ app.use('/api/user_stocks', (req, res)=>{
       if(err) throw err;
       console.log('>>> user.stocks');
       console.log(user);
+      if (!user.stocks)
+        user.stocks = [null, null, null, null, null];
       res.send(user.stocks);
     });
   }
